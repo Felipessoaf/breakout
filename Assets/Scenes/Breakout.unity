@@ -817,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BrickPrefab: {fileID: 4209847223658935653, guid: 9c72404b7279e5a4b9b67032836527ef, type: 3}
   BrickContainer: {fileID: 1073587621}
-  AmountToSpawn: 0
+  AmountToSpawn: 5
 --- !u!4 &1365920366
 Transform:
   m_ObjectHideFlags: 0
