@@ -21,8 +21,13 @@ namespace Breakout
             {
                 //TODO: spawn and setup following a color/point system
                 Brick brick = Instantiate(BrickPrefab, Vector3.right * i * brickWidth, BrickPrefab.transform.rotation, BrickContainer);
-                brick.Setup(Color.blue, 10);
+                brick.Setup(Color.blue, 10, AddPoints);
             }
+        }
+
+        private void AddPoints(int points)
+        {
+            Debug.Log("Adding points: " + points);
         }
     }
 }

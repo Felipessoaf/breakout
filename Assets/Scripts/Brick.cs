@@ -10,21 +10,23 @@ namespace Breakout
         [SerializeField] private Image Image;
 
         private int _pointsToReward;
+        private System.Action<int> _addPointsAction;
 
         private void Start() =>
             BoxCollider2D.size = (transform as RectTransform).rect.size;
 
-        public void Setup(Color color, int points)
+        public void Setup(Color color, int points, System.Action<int> addPointsAction)
         {
             Image.color = color;
             _pointsToReward = points;
+            _addPointsAction = addPointsAction;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if(collision.gameObject.CompareTag("Ball"))
             {
-                //TODO: reward points
+                _addPointsAction?.Invoke(_pointsToReward);
                 Destroy(gameObject);
             }
         }
