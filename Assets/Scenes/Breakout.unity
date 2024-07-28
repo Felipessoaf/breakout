@@ -736,6 +736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottom
       objectReference: {fileID: 0}
+    - target: {fileID: 8892609987925497770, guid: d6f68da363d597f4aa42ba6dd968a858, type: 3}
+      propertyPath: m_TagString
+      value: BottomBoundary
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1159,14 +1163,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: InitialImpulse.x
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: InitialImpulse.y
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1233,7 +1229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -273
       objectReference: {fileID: 0}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dbb542eb7b85345b1c7b1f502f5b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialImpulse: {x: 3000, y: 2000}
+  InitialImpulseMin: {x: 1000, y: 1000}
+  InitialImpulseMax: {x: 3000, y: 2000}
   Rigidbody2D: {fileID: 3936459937646496605}
 --- !u!114 &326038006030099100
 MonoBehaviour:

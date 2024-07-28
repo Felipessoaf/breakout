@@ -9,6 +9,8 @@ namespace Breakout
 
         [SerializeField] private int AmountToSpawn;
 
+        //TODO: implement time limit?
+
         private void Start() => SpawnBricks(AmountToSpawn);
 
         public void SpawnBricks(int amount)
@@ -17,6 +19,7 @@ namespace Breakout
 
             for (int i = 0; i < amount; i++)
             {
+                //TODO: spawn and setup following a color/point system
                 Brick brick = Instantiate(BrickPrefab, Vector3.right * i * brickWidth, BrickPrefab.transform.rotation, BrickContainer);
                 brick.Setup(Color.blue, 10);
             }

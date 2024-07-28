@@ -10,6 +10,8 @@ namespace Breakout
 
         private RectTransform _rectTransform;
 
+        //TODO: change ball velocity with paddle?
+
         private void Start()
         {
             _rectTransform = (transform as RectTransform);
