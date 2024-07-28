@@ -31,13 +31,9 @@ namespace Breakout
 
             float halfWidth = _rectTransform.rect.size.x / 2;
             float nextMoveRightLimit = velocity.x + transform.position.x + halfWidth;
-            if (nextMoveRightLimit > Screen.width && velocity.x > 0)
-            {
-                velocity.x = 0;
-            }
-
             float nextMoveLeftLimit = velocity.x + transform.position.x - halfWidth;
-            if (nextMoveLeftLimit < 0 && velocity.x < 0)
+
+            if(CheckBounds(true, nextMoveRightLimit, velocity.x) || CheckBounds(false, nextMoveLeftLimit, velocity.x))
             {
                 velocity.x = 0;
             }
@@ -50,5 +46,8 @@ namespace Breakout
 
         private Vector2 GetMovementVelocity(bool right) => GetMovementInput(right) ? GetMovementVector(right) : Vector2.zero;
         private Vector2 GetMovementVector(bool right) => right ? Vector2.right : Vector2.left;
+        private bool CheckBounds(bool right, float nextMove, float xVelocity) => 
+            right ? nextMove > Screen.width && xVelocity > 0 :
+            nextMove < 0 && xVelocity < 0;
     }
 }
