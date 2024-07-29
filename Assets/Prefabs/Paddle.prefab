@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoxCollider2D: {fileID: 8989708540686265110}
   Rigidbody2D: {fileID: 5483867073807831172}
-  Speed: 1000
+  Speed: 1500
 --- !u!114 &326038006030099100
 MonoBehaviour:
   m_ObjectHideFlags: 0
