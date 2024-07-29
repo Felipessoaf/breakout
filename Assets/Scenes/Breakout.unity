@@ -959,6 +959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paddle
       objectReference: {fileID: 0}
+    - target: {fileID: 4209847223658935653, guid: ab49f96d1e62af74a9bd2c1d177cc44d, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 1365920365}
     - target: {fileID: 5483867073807831172, guid: ab49f96d1e62af74a9bd2c1d177cc44d, type: 3}
       propertyPath: m_BodyType
       value: 1
@@ -1166,6 +1170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 1365920365}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

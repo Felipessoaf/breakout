@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Breakout
@@ -8,13 +10,29 @@ namespace Breakout
         [SerializeField] private Brick BrickPrefab;
         [SerializeField] private RectTransform BrickContainer;
 
-        [SerializeField] private Level[] levels;
+        [SerializeField] private List<Level> levels;
+
+        public event Action OnLevelComplete;
+
+        private int _bricksDestroyed;
+        private int _bricksTarget;
+        private int _currentLevel;
+        private int _currentScore = 0;
 
         //TODO: implement time limit?
 
-        private void Start() => SpawnBricks(levels[0]);
+        private void Start() => LoadLevel(0);
 
-        public void SpawnBricks(Level level)
+        private void LoadLevel(int levelIndex)
+        {
+            _currentLevel = levelIndex;
+            _bricksDestroyed = 0;
+            _bricksTarget = 0;
+
+            SpawnBricks(levels[_currentLevel]);
+        }
+
+        private void SpawnBricks(Level level)
         {
             float brickWidth = BrickPrefab.GetComponent<RectTransform>().rect.width;
             float brickheight = BrickPrefab.GetComponent<RectTransform>().rect.height;
@@ -25,7 +43,6 @@ namespace Breakout
                 int bricksPerline = level.Lines[lineIndex].AmountOfBricks;
                 for (int brickIndex = 0; brickIndex < bricksPerline; brickIndex++)
                 {
-                    //TODO: spawn and setup following a color/point system
                     Vector3 containerPosition = BrickContainer.transform.position;
                     float leftXPosition = containerPosition.x - ((bricksPerline * brickWidth) / 2);
                     float topYPosition = containerPosition.y + BrickContainer.rect.height / 2;
@@ -35,14 +52,34 @@ namespace Breakout
                     Vector3 newPosition = startingPosition + Vector3.right * brickIndex * brickWidth;
 
                     Brick brick = Instantiate(BrickPrefab, newPosition, BrickPrefab.transform.rotation, BrickContainer);
-                    brick.Setup(Color.blue, 10, AddPoints);
+                    brick.Setup(level.Lines[lineIndex].BrickColor, 10, AddPoints);
+
+                    _bricksTarget++;
                 }
             }
         }
 
         private void AddPoints(int points)
         {
-            Debug.Log("Adding points: " + points);
+            //TODO: update UI
+            _currentScore += points;
+            _bricksDestroyed++;
+
+            CheckLevelComplete();
+        }
+
+        private void CheckLevelComplete()
+        {
+            if (_bricksDestroyed >= _bricksTarget)
+            {
+                OnLevelComplete?.Invoke();
+                _currentLevel++;
+
+                if(_currentLevel < levels.Count)
+                {
+                    LoadLevel(_currentLevel);
+                }
+            }
         }
     }
 }

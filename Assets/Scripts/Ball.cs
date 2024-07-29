@@ -7,12 +7,21 @@ namespace Breakout
         [SerializeField] private Vector2 InitialImpulseMin, InitialImpulseMax;
         [SerializeField] private Rigidbody2D Rigidbody2D;
 
+        [SerializeField] private Controller Controller;
+
         private bool _waitingForLaunch = true;
         private Vector3 _initialPosition;
 
         private void Start()
         {
             _initialPosition = transform.position;
+
+            Controller.OnLevelComplete += ResetLaunch;
+        }
+
+        private void OnDestroy()
+        {
+            Controller.OnLevelComplete -= ResetLaunch;
         }
 
         private void Update()

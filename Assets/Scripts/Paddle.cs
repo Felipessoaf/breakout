@@ -8,19 +8,35 @@ namespace Breakout
         [SerializeField] private Rigidbody2D Rigidbody2D;
         [SerializeField] private int Speed;
 
+        [SerializeField] private Controller Controller;
+
         private RectTransform _rectTransform;
+        private Vector3 _initialPos;
 
         //TODO: change ball velocity with paddle?
 
         private void Start()
         {
+            _initialPos = transform.position;
             _rectTransform = (transform as RectTransform);
             BoxCollider2D.size = _rectTransform.rect.size;
+
+            Controller.OnLevelComplete += ResetMovement;
+        }
+
+        private void OnDestroy()
+        {
+            Controller.OnLevelComplete -= ResetMovement;
         }
 
         private void Update()
         {
             UpdateMovement();
+        }
+
+        public void ResetMovement()
+        {
+            transform.position = _initialPos;
         }
 
         private void UpdateMovement()
