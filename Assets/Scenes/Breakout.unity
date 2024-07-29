@@ -782,8 +782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.3}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 0.00012207, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1350561757 stripped
 RectTransform:
@@ -821,7 +821,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BrickPrefab: {fileID: 4209847223658935653, guid: 9c72404b7279e5a4b9b67032836527ef, type: 3}
   BrickContainer: {fileID: 1073587621}
-  AmountToSpawn: 5
+  levels:
+  - {fileID: 11400000, guid: fbc7e3f708130514c82183c316a05f17, type: 2}
+  - {fileID: 11400000, guid: 78593ab6ca03c6e40a2d75004f7941da, type: 2}
+  - {fileID: 11400000, guid: 608e40c5847d9744484623cb4b6cb4e2, type: 2}
 --- !u!4 &1365920366
 Transform:
   m_ObjectHideFlags: 0
