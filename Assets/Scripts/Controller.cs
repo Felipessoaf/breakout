@@ -13,6 +13,7 @@ namespace Breakout
         [SerializeField] private List<Level> levels;
 
         public event Action OnLevelComplete;
+        public event Action<int> OnScoreChanged;
 
         private int _bricksDestroyed;
         private int _bricksTarget;
@@ -40,7 +41,8 @@ namespace Breakout
 
             for(int lineIndex = 0; lineIndex < level.Lines.Count; lineIndex++)
             {
-                int bricksPerline = level.Lines[lineIndex].AmountOfBricks;
+                Level.Line line = level.Lines[lineIndex];
+                int bricksPerline = line.AmountOfBricks;
                 for (int brickIndex = 0; brickIndex < bricksPerline; brickIndex++)
                 {
                     Vector3 containerPosition = BrickContainer.transform.position;
@@ -52,7 +54,7 @@ namespace Breakout
                     Vector3 newPosition = startingPosition + Vector3.right * brickIndex * brickWidth;
 
                     Brick brick = Instantiate(BrickPrefab, newPosition, BrickPrefab.transform.rotation, BrickContainer);
-                    brick.Setup(level.Lines[lineIndex].BrickColor, 10, AddPoints);
+                    brick.Setup(line.BrickColor, line.PointsToReward, AddPoints);
 
                     _bricksTarget++;
                 }
@@ -61,10 +63,10 @@ namespace Breakout
 
         private void AddPoints(int points)
         {
-            //TODO: update UI
             _currentScore += points;
             _bricksDestroyed++;
 
+            OnScoreChanged?.Invoke(_currentScore);
             CheckLevelComplete();
         }
 
